@@ -6,6 +6,8 @@ def canUnlockAll(boxes):
     """ canUnlockAll """
     if type(boxes) is not list or len(boxes) == 0:
         return False
+    if len(boxes) == 1:
+        return True
     keys = set()
     keys.add(0)
     change = True
