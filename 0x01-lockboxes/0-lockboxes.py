@@ -2,7 +2,7 @@
 """ LockBox """
 
 
-def canUnlockAll(boxes: list[list]):
+def canUnlockAll(boxes):
     """ canUnlockAll """
     keys = set()
     keys.add(0)
