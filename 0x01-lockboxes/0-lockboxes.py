@@ -4,6 +4,8 @@
 
 def canUnlockAll(boxes):
     """ canUnlockAll """
+    if len(boxes) == 0:
+        return True
     keys = set()
     keys.add(0)
     change = True
