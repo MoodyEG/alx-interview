@@ -4,7 +4,7 @@
 
 def canUnlockAll(boxes):
     """ canUnlockAll """
-    if len(boxes) == 0:
+    if type(boxes) is not list or len(boxes) == 0:
         return False
     keys = set()
     keys.add(0)
