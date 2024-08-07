@@ -12,8 +12,8 @@ def minOperations(n: int) -> int:
         if n % prime == 0:
             n /= prime
             operations += prime
-        elif prime % 2 == 0:
-            prime += 1
-        else:
+        elif prime % 2 == 1:
             prime += 2
+        else:
+            prime += 1
     return operations
