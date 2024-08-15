@@ -3,6 +3,7 @@
 
 
 import sys
+import re
 
 
 def print_stats(size, status):
@@ -21,6 +22,13 @@ if __name__ == "__main__":
     count = 0
     try:
         for line in sys.stdin:
+            pattern = r'^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}) -' + \
+            r' (\[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}\]) ' + \
+            r'"GET /projects/260 HTTP/1.1" (\d{1,3}) (\d+)$'
+            if not re.fullmatch(pattern, line.strip()):
+                print(line)
+                print("fail")
+                continue
             if count == 10:
                 print_stats(size, status)
                 count = 1
