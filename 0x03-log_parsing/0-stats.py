@@ -23,8 +23,8 @@ if __name__ == "__main__":
     try:
         for line in sys.stdin:
             line = line.strip()
-            pat = r'^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}) - ' + \
-                  r'(\[\d{4}-\d{1,2}-\d{1,2} \d{2}:\d{2}:\d{2}\.\d{1,6}\])' +\
+            pat = r'^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3} - ' + \
+                  r'\[\d{4}-\d{1,2}-\d{1,2} \d{2}:\d{2}:\d{2}\.\d{1,6}\]' +\
                   r' "GET /projects/260 HTTP/1.1" (\d{1,3}) (\d{1,4})$'
             if not re.fullmatch(pat, line):
                 continue
@@ -35,5 +35,5 @@ if __name__ == "__main__":
             size += int(line[-1])
             if count % 10 == 0:
                 print_stats(size, status)
-    finally:
+    except KeyboardInterrupt:
         print_stats(size, status)
