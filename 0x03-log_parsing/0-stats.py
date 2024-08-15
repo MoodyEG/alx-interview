@@ -19,15 +19,14 @@ if __name__ == "__main__":
               "401": 0, "403": 0, "404": 0,
               "405": 0, "500": 0}
     size = 0
-    count = 0
+    count = 1
     try:
         for line in sys.stdin:
-            count += 1
             line = line.strip()
-            pattern = re.compile(r'^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}) -' + \
+            pattern = r'^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}) -' + \
                       r' (\[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}\]) ' + \
-                      r'"GET /projects/260 HTTP/1.1" (\d{1,3}) (\d{1,4})$')
-            if not pattern.fullmatch(line):
+                      r'"GET /projects/260 HTTP/1.1" (\d{1,3}) (\d{1,4})$'
+            if not re.fullmatch(pattern, line):
                 continue
             line = line.split()
             if line[-2] not in status:
@@ -36,5 +35,6 @@ if __name__ == "__main__":
             status[line[-2]] += 1
             if count % 10 == 0:
                 print_stats(size, status)
+            count += 1
     finally:
         print_stats(size, status)
