@@ -19,7 +19,7 @@ if __name__ == "__main__":
               "401": 0, "403": 0, "404": 0,
               "405": 0, "500": 0}
     size = 0
-    count = 1
+    count = 0
     try:
         for line in sys.stdin:
             line = line.strip()
@@ -28,13 +28,12 @@ if __name__ == "__main__":
                   r' "GET /projects/260 HTTP/1.1" (\d{1,3}) (\d{1,4})$'
             if not re.fullmatch(pat, line):
                 continue
+            count += 1
             line = line.split()
-            if line[-2] not in status:
-                continue
+            if line[-2] in status:
+                status[line[-2]] += 1
             size += int(line[-1])
-            status[line[-2]] += 1
             if count % 10 == 0:
                 print_stats(size, status)
-            count += 1
     finally:
         print_stats(size, status)
