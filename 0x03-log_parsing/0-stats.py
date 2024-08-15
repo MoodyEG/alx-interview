@@ -36,4 +36,6 @@ if __name__ == "__main__":
             if count % 10 == 0:
                 print_stats(size, status)
     except KeyboardInterrupt:
+        pass
+    finally:
         print_stats(size, status)
