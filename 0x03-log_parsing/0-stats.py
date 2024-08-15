@@ -32,5 +32,5 @@ if __name__ == "__main__":
                 if line[-2] in status:
                     size += int(line[-1])
                     status[line[-2]] += 1
-    except KeyboardInterrupt:
+    finally:
         print_stats(size, status)
