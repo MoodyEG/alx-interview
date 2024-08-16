@@ -22,6 +22,7 @@ if __name__ == "__main__":
     count = 0
     try:
         for line in sys.stdin:
+            count += 1
             try:
                 line = line.strip()
                 pat = r'^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3} - ' + \
@@ -30,10 +31,9 @@ if __name__ == "__main__":
                 if not re.fullmatch(pat, line):
                     continue
                 line = line.split()
-                if line[-2] in status:
-                    count += 1
-                    status[line[-2]] += 1
-                    size += int(line[-1])
+                size += int(line[-1])
+                # if line[-2] in status:
+                status[line[-2]] += 1
                 if count % 10 == 0:
                     print_stats(size, status)
             except Exception:
