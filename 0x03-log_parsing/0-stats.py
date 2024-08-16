@@ -32,7 +32,7 @@ if __name__ == "__main__":
             line = line.split()
             if int(line[-2]) in status:
                 status[int(line[-2])] += 1
-            size += int(line[-1])
+                size += int(line[-1])
             if count % 10 == 0:
                 print_stats(size, status)
     except KeyboardInterrupt:
