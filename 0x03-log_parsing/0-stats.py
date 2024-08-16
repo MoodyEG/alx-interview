@@ -22,7 +22,6 @@ if __name__ == "__main__":
     count = 0
     try:
         for line in sys.stdin:
-            count += 1
             try:
                 line = line.strip()
                 pat = r'^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3} - ' + \
@@ -30,14 +29,16 @@ if __name__ == "__main__":
                     r' "GET /projects/260 HTTP/1.1" (\d{1,3}) (\d{1,4})$'
                 if not re.fullmatch(pat, line):
                     continue
+                count += 1
                 line = line.split()
-                size += int(line[-1])
-                # if line[-2] in status:
-                status[line[-2]] += 1
+                if line[-2] in status:
+                    status[line[-2]] += 1
+                    size += int(line[-1])
                 if count % 10 == 0:
                     print_stats(size, status)
             except Exception:
-                pass
+                if count % 10 == 0:
+                    print_stats(size, status)
     except KeyboardInterrupt:
         pass
     finally:
