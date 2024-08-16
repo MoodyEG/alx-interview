@@ -24,11 +24,11 @@ if __name__ == "__main__":
         for line in sys.stdin:
             try:
                 line = line.strip()
-                pat = r'^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3} - ' + \
-                    r'\[\d{4}-\d{1,2}-\d{1,2} \d{2}:\d{2}:\d{2}\.\d{1,6}\]' +\
-                    r' "GET /projects/260 HTTP/1.1" (\d{1,3}) (\d{1,4})$'
-                if not re.fullmatch(pat, line):
-                    continue
+                #pat = r'^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3} - ' + \
+                    #r'\[\d{4}-\d{1,2}-\d{1,2} \d{2}:\d{2}:\d{2}\.\d{1,6}\]' +\
+                    #r' "GET /projects/260 HTTP/1.1" (\d{1,3}) (\d{1,4})$'
+                #if not re.fullmatch(pat, line):
+                    #continue
                 count += 1
                 line = line.split()
                 if line[-2] in status:
