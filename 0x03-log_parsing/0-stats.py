@@ -8,10 +8,10 @@ import re
 
 def print_stats(size: int, status: dict) -> None:
     """ Print stats """
-    print("File size: {}".format(size))
+    print("File size: {:d}".format(size))
     for key in sorted(status.keys()):
         if status[key] > 0:
-            print("{}: {}".format(key, status[key]))
+            print("{:d}: {:d}".format(int(key), status[key]))
 
 
 if __name__ == "__main__":
