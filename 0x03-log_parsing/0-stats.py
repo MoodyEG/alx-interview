@@ -22,7 +22,6 @@ if __name__ == "__main__":
     count = 0
     try:
         for line in sys.stdin:
-            count += 1
             line = line.strip()
             pat = r'^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3} - ' + \
                   r'\[\d{4}-\d{1,2}-\d{1,2} \d{2}:\d{2}:\d{2}\.\d{1,6}\]' +\
@@ -31,6 +30,7 @@ if __name__ == "__main__":
                 continue
             line = line.split()
             if int(line[-2]) in status:
+                count += 1
                 status[int(line[-2])] += 1
                 size += int(line[-1])
             if count % 10 == 0:
