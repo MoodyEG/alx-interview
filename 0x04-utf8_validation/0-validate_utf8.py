@@ -5,6 +5,9 @@
 def validUTF8(data):
     """ UTF-8 Validation """
 
+    if not data:
+        return False
+
     for i in range(len(data)):
         if data[i] >> 7 == 0:
             continue
