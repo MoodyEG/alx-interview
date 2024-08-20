@@ -5,9 +5,10 @@
 def validUTF8(data):
     """ UTF-8 Validation """
     i = 0
-    for t in data:
-        if type(t) != int:
-            return False
+    for i in range(len(data)):
+        # to get the least 8 bits
+        if data[i] > 255:
+            data[i] = data[i] & 255
     while i < len(data):
         if data[i] >> 7 == 0:
             # num < 128
@@ -32,7 +33,7 @@ def validUTF8(data):
             i += 4
             continue
         else:
-            # 248 <= num
+            # 248 <= num < 256
             # 128 <= num < 192
             return False
 
