@@ -4,11 +4,11 @@
 
 def validUTF8(data):
     """ UTF-8 Validation """
-    i = 0
     for i in range(len(data)):
         # to get the least 8 bits
         if data[i] > 255:
             data[i] = data[i] & 255
+    i = 0
     while i < len(data):
         if data[i] >> 7 == 0:
             # num < 128
