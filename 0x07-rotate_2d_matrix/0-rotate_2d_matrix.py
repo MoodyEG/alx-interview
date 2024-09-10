@@ -2,7 +2,7 @@
 """ Rotate Matrix """
 
 
-def rotate_2d_matrix(matrix: list[list]) -> None:
+def rotate_2d_matrix(matrix):
     """ Rotate Matrix """
     n = len(matrix)
     for i in range(n // 2):
