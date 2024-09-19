@@ -9,7 +9,7 @@ def makeChange(coins, total):
     if total <= 0:
         return 0
 
-    """ With dynamic programming and heapq sadly checker isn't fast enough 
+    """ With dynamic programming and heapq sadly checker isn't fast enough
     to handle it so I left it here and used greedy to pass the checker
     when it overloads like always """
     # dp = [total + 1] * (total + 1)
