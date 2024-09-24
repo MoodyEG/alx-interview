@@ -4,23 +4,22 @@
 
 def island_perimeter(grid):
     """ Island Parameter """
-    length = len(grid)
     parameter = 0
 
-    for i in range(length):
-        for j in range(length):
+    for i in range(len(grid)):
+        for j in range(len(grid[i])):
             if grid[i][j] == 1:
                 # Checking top
                 if i == 0 or grid[i - 1][j] == 0:
                     parameter += 1
                 # Checking bot
-                if i + 1 == length or grid[i + 1][j] == 0:
+                if i + 1 == len(grid) or grid[i + 1][j] == 0:
                     parameter += 1
                 # Checking left
                 if j == 0 or grid[i][j - 1] == 0:
                     parameter += 1
                 # Checking right
-                if j + 1 == length or grid[i][j + 1] == 0:
+                if j + 1 == len(grid[i]) or grid[i][j + 1] == 0:
                     parameter += 1
 
     return parameter
